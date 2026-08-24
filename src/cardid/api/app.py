@@ -146,7 +146,9 @@ async def _run_identify(
         request_id=request_id,
         use_cache=use_cache,
     )
-    if result.decision is not Decision.AUTO_ACCEPT:
+    # Only genuine near-misses are worth a human's time. A reject means nothing
+    # usable was extracted, so queueing those would bury the reviewable items.
+    if result.decision is Decision.REVIEW:
         _review().enqueue(result, image_url=image_url, title=title)
     return _to_response(result)
 

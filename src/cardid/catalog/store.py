@@ -85,14 +85,27 @@ def build_search_text(card: CatalogCard) -> str:
 
 _UPPER_WORDS = {"ii", "iii", "iv", "v", "jr", "sr", "rc", "sp", "ssp", "xr", "rpa"}
 
+# Initial-style first names are common in football (CJ Stroud, DK Metcalf,
+# TJ Watt) and must not render as "Cj". A short token with no vowel reads as
+# initials; "aj" is listed explicitly because it carries one.
+_VOWELS = set("aeiou")
+_INITIAL_NAMES = {"aj"}
+
+
+def _is_initials(word: str) -> bool:
+    return len(word) in (2, 3) and (not _VOWELS & set(word) or word in _INITIAL_NAMES)
+
 
 def title_case(value: str) -> str:
     """Title-case a card string while keeping suffixes like II and Jr. right."""
     words = []
     for word in value.split():
         lowered = word.lower()
+        # Suffixes are checked first: "jr" has no vowel but is not initials.
         if lowered in _UPPER_WORDS:
             words.append("Jr." if lowered == "jr" else "Sr." if lowered == "sr" else word.upper())
+        elif _is_initials(lowered):
+            words.append(word.upper())
         else:
             words.append(word.capitalize())
     return " ".join(words)

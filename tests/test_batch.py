@@ -142,3 +142,14 @@ def test_a_caller_supplied_fetcher_is_not_closed(identifier, job):
     fetcher = TrackingFetcher()
     asyncio.run(run_batch(identifier, source, target, fetcher=fetcher))
     assert fetcher.closed is False
+
+
+def test_batch_queues_only_reviewable_items(identifier, job):
+    source, target = job
+    queue = ReviewStore(":memory:")
+    write_input(source, [
+        ["a1", "2017 Prizm Mahomes #269 RC", ""],      # review
+        ["a2", "lot of assorted football cards", ""],  # reject
+    ])
+    asyncio.run(run_batch(identifier, source, target, fetcher=DeadFetcher(), review=queue))
+    assert queue.stats()["pending"] == 1
