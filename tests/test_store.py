@@ -65,3 +65,20 @@ def test_display_name_keeps_suffix_casing():
 def test_title_case_handles_suffixes():
     assert title_case("odell beckham jr") == "Odell Beckham Jr."
     assert title_case("national treasures") == "National Treasures"
+
+
+def test_title_case_handles_initial_style_first_names():
+    """CJ Stroud and DK Metcalf must not render as "Cj" and "Dk"."""
+    assert title_case("cj stroud") == "CJ Stroud"
+    assert title_case("dk metcalf") == "DK Metcalf"
+    assert title_case("aj brown") == "AJ Brown"
+
+
+def test_title_case_does_not_shout_short_real_names():
+    assert title_case("bo jackson") == "Bo Jackson"
+    assert title_case("ed reed") == "Ed Reed"
+
+
+def test_title_case_keeps_suffixes_over_the_initials_rule():
+    # "jr" has no vowel but is a suffix, not initials.
+    assert title_case("odell beckham jr") == "Odell Beckham Jr."

@@ -163,3 +163,9 @@ def test_healthz_stays_open_without_a_key(client, monkeypatch):
     """Load balancers must still be able to probe the service."""
     monkeypatch.setenv("CARDID_API_KEY", "secret")
     assert client.get("/healthz").status_code == 200
+
+
+def test_rejected_items_do_not_clog_the_review_queue(client):
+    """A reject has nothing usable in it; queueing those buries real near-misses."""
+    client.post("/v1/identify", json={"title": "lot of assorted football cards"})
+    assert client.get("/v1/review").json() == []

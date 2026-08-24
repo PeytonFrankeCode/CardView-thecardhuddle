@@ -141,7 +141,7 @@ async def run_batch(
                 result = await asyncio.to_thread(
                     identifier.identify, image_bytes=image_bytes, title=item.title
                 )
-                if review is not None and result.decision is not Decision.AUTO_ACCEPT:
+                if review is not None and result.decision is Decision.REVIEW:
                     review.enqueue(result, image_url=item.image_url, title=item.title)
 
                 attrs = result.fused
