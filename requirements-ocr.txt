@@ -1,0 +1,13 @@
+# Optional heavy backends. Install only on the box that runs inference.
+# Pick ONE ocr backend.
+
+# Recommended: PaddleOCR (best accuracy on stylized card fonts)
+# paddlepaddle==2.6.2
+# paddleocr==2.9.1
+
+# Lighter fallback: Tesseract (also needs the `tesseract-ocr` system package)
+# pytesseract==0.3.13
+
+# Visual embedding backend (parallel/refractor disambiguation)
+# torch==2.5.1
+# open-clip-torch==2.30.0

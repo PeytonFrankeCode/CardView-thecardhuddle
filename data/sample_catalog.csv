@@ -1,0 +1,11 @@
+card_id,year,brand,set_name,subset,player,team,card_number,parallel,print_run,is_rookie,is_autograph,is_patch
+prizm_2017_269_base,2017,Panini,Prizm,,Patrick Mahomes II,Kansas City Chiefs,269,Base,,1,0,0
+prizm_2017_269_silver,2017,Panini,Prizm,,Patrick Mahomes II,Kansas City Chiefs,269,Silver,,1,0,0
+prizm_2017_269_gold,2017,Panini,Prizm,,Patrick Mahomes II,Kansas City Chiefs,269,Gold,10,1,0,0
+contenders_2018_101_base,2018,Panini,Contenders,Rookie Ticket,Josh Allen,Buffalo Bills,101,Base,,1,1,0
+optic_2020_158_base,2020,Panini,Optic,Rated Rookie,Justin Herbert,Los Angeles Chargers,158,Base,,1,0,0
+optic_2020_158_holo,2020,Panini,Optic,Rated Rookie,Justin Herbert,Los Angeles Chargers,158,Holo,,1,0,0
+prizm_2020_307_base,2020,Panini,Prizm,,Joe Burrow,Cincinnati Bengals,307,Base,,1,0,0
+nt_2021_115_auto,2021,Panini,National Treasures,,Trevor Lawrence,Jacksonville Jaguars,115,Base,99,1,1,1
+prizm_2023_339_base,2023,Panini,Prizm,,CJ Stroud,Houston Texans,339,Base,,1,0,0
+prizm_2023_339_silver,2023,Panini,Prizm,,CJ Stroud,Houston Texans,339,Silver,,1,0,0

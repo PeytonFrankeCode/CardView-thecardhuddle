@@ -1,0 +1,13 @@
+__pycache__/
+*.py[cod]
+.venv/
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+
+# Local databases and model weights — rebuild these, never commit them.
+data/*.db
+*.sqlite
+*.sqlite3
+.env
